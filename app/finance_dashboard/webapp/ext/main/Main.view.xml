@@ -1,0 +1,155 @@
+<mvc:View
+    xmlns:c="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:u="sap.ui.unified"
+    xmlns="sap.m"
+    xmlns:t="sap.ui.table"
+    xmlns:f="sap.f"
+    xmlns:layout="sap.ui.layout"
+    height="100%"
+    controllerName="financedashboard.ext.main.Main"
+>
+    <f:DynamicPage
+        preserveHeaderStateOnScroll="true"
+        headerExpanded="true"
+        showFooter="true"
+        fitContent="true"
+    >
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <Title
+                        text="{i18n>appTitle}"
+                        level="H1"
+                    />
+                </f:heading>
+                <f:expandedContent>
+                    <Label text="{i18n>appDescription}" />
+                </f:expandedContent>
+                <f:snappedContent>
+                    <Label text="{i18n>appDescription}" />
+                </f:snappedContent>
+                <f:actions>
+                    <ToolbarSpacer />
+                    <Button
+                        text="Share"
+                        press="onShare"
+                        icon="sap-icon://share-2"
+                        type="Emphasized"
+                    />
+                </f:actions>
+            </f:DynamicPageTitle>
+        </f:title>
+
+        <f:header>
+            <f:DynamicPageHeader pinnable="true">
+                <FlexBox
+                    items="{localModel>/KPI}"
+                    justifyContent="SpaceAround"
+                    wrap="Wrap"
+                >
+                    <GenericTile
+                        class="sapUiTinyMargin"
+                        header="{localModel>header}"
+                        frameType="OneByHalf"
+                    >
+                        <TileContent unit="INR">
+                            <NumericContent
+                                value="{localModel>value}"
+                                valueColor="{localModel>valueColor}"
+                                withMargin="true"
+                            />
+                        </TileContent>
+                    </GenericTile>
+                </FlexBox>
+            </f:DynamicPageHeader>
+        </f:header>
+
+        <f:content>
+            <Table
+                id="idTable"
+                modeAnimationOn="true"
+                growing="true"
+                alternateRowColors="true"
+                growingScrollToLoad="true"
+                items="{path: '/TravelRequest', sorter: [{path: 'createdAt', descending:true}]}"
+            >
+                <headerToolbar>
+                    <Toolbar>
+                        <Title text="Travel Plan ({= ${/TravelRequest/$count}})" />
+                        <ToolbarSpacer />
+                        <MenuButton
+                            icon="sap-icon://excel-attachment"
+                            text="Export"
+                            type="Success"
+                        >
+                            <menu>
+                                <Menu>
+                                    <items>
+                                        <MenuItem
+                                            text="Export as CSV"
+                                            icon="sap-icon://document-text"
+                                            press="onExport('CSV')"
+                                        />
+                                        <MenuItem
+                                            text="Export as Excel"
+                                            icon="sap-icon://excel-attachment"
+                                            press="onExport('XLSX')"
+                                        />
+                                    </items>
+                                </Menu>
+                            </menu>
+                        </MenuButton>
+                    </Toolbar>
+                </headerToolbar>
+
+                <columns>
+                    <Column hAlign="Center">
+                        <Text text="Request No." />
+                    </Column>
+                    <Column hAlign="Center">
+                        <Text text="Employee Name" />
+                    </Column>
+                    <Column hAlign="Center">
+                        <Text text="Department" />
+                    </Column>
+                    <Column hAlign="Center">
+                        <Text text="Travel Purpose" />
+                    </Column>
+                    <Column hAlign="Center">
+                        <Text text="Travel Status" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem type="Navigation" press="onNavigate">
+                        <cells>
+                            <Text text="{REQID}" />
+                            <Text text="{firstname} {lastname}" />
+                            <Text text="{dept}" />
+                            <Text text="{purposeoftravel}" />
+                            <ObjectStatus
+                                text="{path: 'reqstatus', formatter: '._onFormatStateText'}"
+                                icon="{path: 'reqstatus', formatter: '._onFormatStateIcon'}"
+                                state="{path: 'reqstatus', formatter: '._onFormatState'}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+
+                <noData>
+                    <IllustratedMessage />
+                </noData>
+            </Table>
+        </f:content>
+
+        <f:footer>
+            <OverflowToolbar>
+                <ToolbarSpacer />
+                <Button
+                    type="Critical"
+                    text="Exit"
+                    icon="sap-icon://close-command-field"
+                />
+            </OverflowToolbar>
+        </f:footer>
+    </f:DynamicPage>
+</mvc:View>

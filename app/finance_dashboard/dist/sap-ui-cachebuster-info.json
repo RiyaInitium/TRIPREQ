@@ -1,0 +1,19 @@
+{
+  "ext/detail/Detail.controller.js.map": 1729067330254,
+  "manifest.json": 1729067330082,
+  "ext/detail/Detail.controller.js": 1729067076338,
+  "ext/main/Main.controller.js": 1729067078310,
+  "Component.js": 1729067073282,
+  "ext/main/Main-dbg.controller.js": 1729067078310,
+  "ext/main/Main.controller.js.map": 1729067330258,
+  "ext/detail/Detail-dbg.controller.js": 1729067076338,
+  "i18n/i18n.properties": 1729067272738,
+  "Component-dbg.js": 1729067073282,
+  "Component.js.map": 1729067330229,
+  "Component-preload.js": 1729067330494,
+  "Component-preload.js.map": 1729067330494,
+  "ext/main/Main.view.xml": 1729067078310,
+  "ext/detail/Detail.view.xml": 1729067076338,
+  "style/style.css": 1729067082406,
+  "index.html": 1729067073282
+}

@@ -1,0 +1,12 @@
+PROCEDURE "UpdateReqStat"( )
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   --DEFAULT SCHEMA <default_schema_name>
+   --READS SQL DATA 
+   AS
+BEGIN
+   /*************************************
+       Write your procedure logic
+   *************************************/
+   UPDATE TRAVELREQ_TRAVELREQUEST SET REQSTATUS = 'Completed' WHERE RETURNDATE = CURRENT_DATE; 
+END

@@ -1,0 +1,15 @@
+empid,firstname,lastname,dob,designation,dept,subdept,address,mgrid,mgrname,empemail,mgremail,mgrcontact
+IDPL01,Sagar,Patil,1999-01-01,Director,Delivery,Fiori/HANA,Pune,IDPL02,Tushar Ladhe,sagar@initiumdigital.com,tushar.ladhe@initiumdigital.com,6587934523
+IDPL02,Tushar,Ladhe,1999-01-02,Sr. Consultant,Delivery,HANA,Pune,IDPL07,Mitalee Chaudhari,tushar.ladhe@initiumdigital.com,mitalee.chaudhari@initiumdigital.com,6587934524
+IDPL03,Kunal,Ingale,1999-01-03,Sr. Consultant,Delivery,HANA,Pune,IDPL07,Mitalee Chaudhari,kunal.ingale@initiumdigital.com,mitalee.chaudhari@initiumdigital.com,6587934525
+IDPL04,Varun,Gaikwad,1999-01-04,Sr. Consultant,Delivery,Fiori,Pune,IDPL08,Priyanka Ladhe,varun.gaikwad@initiumdigital.com,priyanka.ladhe@initiumdigital.com,6587934526
+IDPL05,Manish,Matte,1999-01-05,Consultant,Delivery,HANA,Pune,IDPL08,Priyanka Ladhe,manish.matte@initiumdigital.com,priyanka.ladhe@initiumdigital.com,6587934527
+IDPL06,Nikita,Dusane,1999-01-06,Sales Executive,Sales,Fiori/HANA,Pune,IDPL08,Priyanka Ladhe,nikita.dusane@initiumdigital.com,priyanka.ladhe@initiumdigital.com,6587934528
+IDPL07,Mitalee,Chaudhari,1999-01-07,Consultant,Delivery,Fiori/HANA,Pune,IDPL02,Tushar Ladhe,mitalee.chaudhari@initiumdigital.com,tushar.ladhe@initiumdigital.com,6587934529
+IDPL08,Priyanka,Ladhe,1999-01-08,Consultant,Delivery,Fiori/HANA,Pune,IDPL02,Tushar Ladhe,priyanka.ladhe@initiumdigital.com,tushar.ladhe@initiumdigital.com,6587934530
+IDPL09,Keyur,Chaudhari,1999-01-09,Trainee,Delivery,Fiori,Pune,IDPL07,Mitalee Chaudhari,keyur.chaudhari@initiumdigital.com,mitalee.chaudhari@initiumdigital.com,6587934531
+IDPL10,Riya,Tickoo,1999-01-10,Sr. Consultant,Delivery,Fiori,Pune,IDPL02,Tushar Ladhe,Riya.Tickoo@initiumdigital.com,tushar.ladhe@initiumdigital.com,6587934532
+IDPL11,Ruchi,Mulatkar,1999-01-11,Trainer,Sales,Training,Pune,IDPL01,Sagar Patil,ruchi.mulatkar@initiumlearning.com,sagar@initiumdigital.com,6587934533
+IDPL12,Pranali,Joshi,1999-01-12,Trainer,Sales,Training,Pune,IDPL01,Sagar Patil,pranali.joshi@initiumlearning.com,sagar@initiumdigital.com,6587934534
+IDPL13,Abhishek,Bhate,1999-01-13,Sales Director,Sales,Fiori/HANA,Pune,IDPL01,Sagar Patil,sales@initiumdigital.com,sagar@initiumdigital.com,6587934535
+IDPL14,Girish,Kanawade,1999-01-14,Finance Director,Finance,BTP,Pune,IDPL13,Abhishek Bhate,Finance@initiumdigital.com,sales@initiumdigital.com,6587934536

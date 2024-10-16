@@ -1,0 +1,267 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" height="100%" xmlns="sap.uxap"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:layout="sap.ui.layout" xmlns:m="sap.m" controllerName="financedashboard.ext.detail.Detail">
+    <ObjectPageLayout id="idObjectPageLayout" enableLazyLoading="true"
+        beforeNavigate="onBeforeNavigate" useIconTabBar="false" showFooter="true"
+        showTitleInHeaderContent="true" upperCaseAnchorBar="false" sectionChange="onSectionChange">
+        <headerTitle>
+            <ObjectPageDynamicHeaderTitle>
+                <expandedHeading>
+                    <m:Title text="{firstname} {lastname}" wrapping="true" />
+                </expandedHeading>
+
+                <snappedHeading>
+                    <m:FlexBox fitContainer="true" alignItems="Center">
+                        <m:Avatar class="sapUiTinyMarginEnd" />
+                        <m:Title text="{firstname} {lastname}" wrapping="true" />
+                    </m:FlexBox>
+                </snappedHeading>
+                <expandedContent>
+                    <m:Text text="{empid}" />
+                </expandedContent>
+                <snappedContent>
+                    <m:Text text="{empid}" />
+                </snappedContent>
+                <snappedTitleOnMobile>
+                    <m:Title text="{empid}" />
+                </snappedTitleOnMobile>
+                <actions>
+                    <m:Button type="Ghost" icon="sap-icon://share-2" press="onShare" text="Share" />
+                </actions>
+            </ObjectPageDynamicHeaderTitle>
+        </headerTitle>
+        <headerContent>
+            <m:HeaderContainer id="headerContainer" scrollStep="200" showDividers="false">
+                <m:HBox class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
+                    <m:Avatar class="sapUiMediumMarginEnd sapUiSmallMarginBottom" displaySize="XL" />
+                    <m:VBox class="sapUiSmallMarginBottom">
+                        <m:Title text="Travel Request" class="sapUiTinyMarginBottom" />
+                        <m:HBox class="sapUiTinyMarginBottom" renderType="Bare">
+                            <m:Label text="Request ID:" class="sapUiTinyMarginEnd" />
+                            <m:Text text=" {REQID}" />
+                        </m:HBox>
+                        <m:HBox class="sapUiTinyMarginBottom" renderType="Bare">
+                            <m:Label text="Request Number:" class="sapUiTinyMarginEnd" />
+                            <m:Text text=" {ReqNo}" />
+                        </m:HBox>
+                        <m:HBox class="sapUiTinyMarginBottom" renderType="Bare">
+                            <m:Label text="Employee ID:" class="sapUiTinyMarginEnd" />
+                            <m:Text text=" {empid}" />
+                        </m:HBox>
+                        <m:HBox>
+                            <m:Label text="Department:" class="sapUiTinyMarginEnd" />
+                            <m:Text text=" {dept}" />
+                        </m:HBox>
+                    </m:VBox>
+                </m:HBox>
+
+                <m:VBox class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
+                    <m:Title text="Contact Information" class="sapUiTinyMarginBottom" />
+                    <m:HBox>
+                        <core:Icon src="sap-icon://email" />
+                        <m:Link press="onEmail" text="{emailid}" class="sapUiSmallMarginBegin" />
+                    </m:HBox>
+                </m:VBox>
+
+                <m:VBox class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
+                    <m:HBox class="sapUiTinyMarginBottom">
+                        <m:Label text="Created By:" class="sapUiSmallMarginEnd" />
+                        <m:Text text="{createdBy}" />
+                    </m:HBox>
+
+                    <m:HBox class="sapUiTinyMarginBottom" renderType="Bare">
+                        <m:Label text="Created On:" class="sapUiSmallMarginEnd" />
+                        <m:Text text="{createdAt}" />
+                    </m:HBox>
+
+                    <m:HBox class="sapUiTinyMarginBottom">
+                        <m:Label text="Changed By:" class="sapUiSmallMarginEnd" />
+                        <m:Text text="{modifiedBy}" />
+                    </m:HBox>
+
+                    <m:HBox renderType="Bare">
+                        <m:Label text="Changed On:" class="sapUiSmallMarginEnd" />
+                        <m:Text text="{modifiedAt}" />
+                    </m:HBox>
+                </m:VBox>
+                <m:VBox class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
+                    <m:Title text="Request Status" class="sapUiTinyMarginBottom" />
+                    <m:ObjectStatus text="{path: 'reqstatus', formatter: '._onFormatStateText'}"
+                        state="{path: 'reqstatus', formatter: '._onFormatState'}"
+                        class="sapMObjectStatusLarge" />
+                </m:VBox>
+
+                <m:VBox class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
+                    <m:Title text="Day's Left" class="sapUiTinyMarginBottom" />
+                    <m:ObjectStatus
+                        text="{path: 'departdate', formatter: '._onGetDaysLeftFromToday'} Days"
+                        icon="sap-icon://journey-depart"
+                        class="sapMObjectStatusLarge" />
+                </m:VBox>
+
+                <m:VBox class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
+                    <m:Title text="Destination City" class="sapUiTinyMarginBottom" />
+                    <m:Text text="{destcity}" />
+                </m:VBox>
+            </m:HeaderContainer>
+        </headerContent>
+
+        <sections>
+            <ObjectPageSection titleUppercase="false" title="Travel Request">
+                <subSections>
+                    <ObjectPageSubSection>
+                        <f:Form editable="true">
+                            <f:layout>
+                                <f:ColumnLayout />
+                            </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements>
+                                        <f:FormElement label="Travel Preferences">
+                                            <f:fields>
+                                                <m:SegmentedButton selectedKey="{travelpreference}"
+                                                    width="100%" enabled="false">
+                                                    <m:items>
+                                                        <m:SegmentedButtonItem text="Airline"
+                                                            key="0" />
+                                                        <m:SegmentedButtonItem text="Car" key="1" />
+                                                        <m:SegmentedButtonItem text="Train" key="2" />
+                                                    </m:items>
+                                                </m:SegmentedButton>
+                                            </f:fields>
+                                        </f:FormElement>
+                                        <f:FormElement label="Airlines">
+                                            <f:fields>
+                                                <m:SegmentedButton selectedKey="{traveltype}"
+                                                    width="100%" enabled="false">
+                                                    <m:items>
+                                                        <m:SegmentedButtonItem text="Domestic"
+                                                            key="0" />
+                                                        <m:SegmentedButtonItem text="International"
+                                                            key="1" />
+                                                    </m:items>
+                                                </m:SegmentedButton>
+                                            </f:fields>
+                                        </f:FormElement>
+                                        <f:FormElement
+                                            label="Travel Purpose">
+                                            <f:fields>
+                                                <m:Text text="{purposeoftravel}" width="100%" />
+                                            </f:fields>
+                                        </f:FormElement>
+                                        <f:FormElement
+                                            label="Departure City">
+                                            <f:fields>
+                                                <m:Text text="{departcity}" width="100%" />
+                                            </f:fields>
+                                        </f:FormElement>
+                                        <f:FormElement
+                                            label="Destination City">
+                                            <f:fields>
+                                                <m:Text text="{destcity}" width="100%" />
+                                            </f:fields>
+                                        </f:FormElement>
+                                        <f:FormElement
+                                            label="Trip Type">
+                                            <f:fields>
+                                                <m:SegmentedButton selectedKey="{triptype}"
+                                                    width="100%" enabled="false">
+                                                    <m:items>
+                                                        <m:SegmentedButtonItem text="One Way"
+                                                            key="One way" />
+                                                        <m:SegmentedButtonItem text="Round Trip"
+                                                            key="Round trip" />
+                                                    </m:items>
+                                                </m:SegmentedButton>
+                                            </f:fields>
+                                        </f:FormElement>
+
+                                        <f:FormElement
+                                            label="Departure Date">
+                                            <f:fields>
+                                                <m:DatePicker value="{departdate}" width="100%"
+                                                    editable="false" />
+                                            </f:fields>
+                                        </f:FormElement>
+                                        <f:FormElement
+                                            label="Return Date">
+                                            <f:fields>
+                                                <m:DatePicker value="{returndate}" width="100%"
+                                                    editable="false" />
+                                            </f:fields>
+                                        </f:FormElement>
+                                        <f:FormElement
+                                            label="Do you need accomodation?">
+                                            <f:fields>
+                                                <m:SegmentedButton selectedKey="{accomodation}"
+                                                    enabled="false" width="100%">
+                                                    <m:items>
+                                                        <m:SegmentedButtonItem text="Yes"
+                                                            key="Yes" />
+                                                        <m:SegmentedButtonItem text="No"
+                                                            key="No" />
+                                                    </m:items>
+                                                </m:SegmentedButton>
+                                            </f:fields>
+                                        </f:FormElement>
+                                        <f:FormElement
+                                            label="If yes, any Preference?">
+                                            <f:fields>
+                                                <m:Text text="{accpreference}" width="100%" />
+                                            </f:fields>
+                                        </f:FormElement>
+                                        <f:FormElement
+                                            label="Attachment">
+                                            <f:fields>
+                                                <!-- <m:List /> -->
+                                            </f:fields>
+                                        </f:FormElement>
+                                        <f:FormElement
+                                            label="Additional Information">
+                                            <f:fields>
+                                                <m:Text width="100%" />
+                                            </f:fields>
+                                        </f:FormElement>
+                                    </f:formElements>
+                                </f:FormContainer>
+                            </f:formContainers>
+                        </f:Form>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+            <ObjectPageSection title="Comments" titleUppercase="false">
+                <subSections>
+                    <ObjectPageSubSection title="Manager Comment">
+                        <m:FlexBox direction="Column">
+                            <m:Label text="Comment" />
+                            <m:TextArea editable="false" value="{mgrnotes}" width="100%" />
+                        </m:FlexBox>
+                    </ObjectPageSubSection>
+                    <ObjectPageSubSection title="Finance Comment">
+                        <m:FlexBox direction="Column">
+                            <m:Label text="Comment" />
+                            <m:TextArea value="{localModel>/financeComments}" width="100%" />
+                        </m:FlexBox>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+        </sections>
+        <footer>
+            <m:OverflowToolbar>
+                <m:ToolbarSpacer />
+                <m:Button
+                    press="onApproveReject"
+                    type="Success"
+                    text="Approve"
+                    icon="sap-icon://employee-approvals"
+                />
+                <m:Button
+                    press="onApproveReject"
+                    type="Reject"
+                    text="Reject"
+                    icon="sap-icon://employee-rejections"
+                />
+            </m:OverflowToolbar>
+        </footer>
+    </ObjectPageLayout>
+</mvc:View>

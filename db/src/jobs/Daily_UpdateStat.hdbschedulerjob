@@ -1,0 +1,3 @@
+SCHEDULER JOB "Daily_UpdateStat"
+  CRON '* * * * 12 20 0' ENABLE PROCEDURE "UpdateReqStat" 
+  

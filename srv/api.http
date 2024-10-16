@@ -1,0 +1,14 @@
+### Update req status for approval and rejection.
+POST http://localhost:4004/finance/updateRequest
+Content-Type: application/json
+ 
+{
+    "REQID":13,
+    "reqstatus":"RejectedF",
+    "financenotes":"Test",
+	"empid":"IDPL10",
+	"firstname":"Riya",
+	"emailid":"riya.tickoo@initiumdigital.com"
+}
+
+

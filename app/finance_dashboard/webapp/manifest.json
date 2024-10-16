@@ -1,0 +1,155 @@
+{
+  "_version": "1.65.0",
+  "sap.app": {
+    "id": "financedashboard",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:fpm",
+      "version": "1.15.1",
+      "toolsId": "8c33b601-96e4-4779-8ced-da3228606811"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/finance/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "Finance_Dashboard-Display": {
+          "semanticObject": "Finance_Dashboard",
+          "action": "Display",
+          "title": "{{flpTitle}}",
+          "icon": "sap-icon://bbyd-dashboard",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        },
+        "ftravelreq-Display": {
+          "semanticObject": "ftravelreq",
+          "action": "Display",
+          "title": "{{flpTitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.129.1",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.fe.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "financedashboard.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "style/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {},
+      "routes": [
+        {
+          "name": "TravelRequestMain",
+          "pattern": ":?query:",
+          "target": "TravelRequestMain"
+        },
+        {
+          "name": "TravelRequestDetail",
+          "pattern": "TravelID/{ID}:?query:",
+          "target": "TravelRequestDetail"
+        }
+      ],
+      "targets": {
+        "TravelRequestMain": {
+          "type": "Component",
+          "id": "TravelRequestMain",
+          "name": "sap.fe.core.fpm",
+          "options": {
+            "settings": {
+              "contextPath": "/TravelRequest",
+              "viewName": "financedashboard.ext.main.Main"
+            }
+          }
+        },
+        "TravelRequestDetail": {
+          "type": "Component",
+          "id": "TravelRequestDetail",
+          "name": "sap.fe.core.fpm",
+          "options": {
+            "settings": {
+              "navigation": {},
+              "contextPath": "/TravelRequest",
+              "viewName": "financedashboard.ext.detail.Detail"
+            }
+          }
+        }
+      }
+    }
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "TravelReq-router"
+  }
+}
